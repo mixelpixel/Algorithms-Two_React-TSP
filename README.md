@@ -1,24 +1,5 @@
 
-# Algorithms First Review
-
-## Review
-
-Incorrect complexity of NN
-
-Incorrect diagram of O(n log n)
-
-# NN TSP Review Assignment
-
-1. How long to run on set of size 4? 10? 20?
-2. How long to run NN on same sets?
-3. How close is NN's solution to the optimal?
-4. How can you improve NN?
-
-# kNN TSP assignment
-
-kNN
-
-k = number of neighbors to explore
+# Algorithms Circle the Wagons
 
 # Terms
 
@@ -108,8 +89,4 @@ First, think about what your component should be able to do:
 ## Next:
 
 Another react component: Draw it!
-
-
-
-
 
