@@ -1,14 +1,105 @@
-// Step 1: Import React, and Component from react.
-// Step 2: Import render from react-dom
-// Step 3: Import MoviesList from MoviesList
+import React from 'react';
 
-// Step 4: Write a class called App, extending Component.
-// Step 5: Write a constructor function without passing anything into it.
-// Step 6: Inside the constructor function, call super without passing anything into it.
-// Step 7: Inside the constructor function, create a state on this, and set it to an object.
-// Step 8: Inside the object, set a key to movies, and the value to an array of movies
-// Step 9: Write a render function.
-// Step 10: Inside the render function, write a return statement.
-// Step 11: Inside the return statement, write a selfclosing tag called MoviesList
-// Step 12: Inside the selfclosing tag, give it an attribute called movies, and pass it this.state.movies inside a set of curly bracket.
-// Step 13: Outside the class, export the App class as a default.
+let kNNTsp = require('./tsp/ls-knn-tsp');
+let libTsp = require('./tsp/ls-tsp-lib');
+
+let canvasSize = {
+  x: 1000,
+  y: 1000,
+}
+
+let canvasContainerStyle = {
+  margin: "10 auto"
+}
+
+let canvasStyle = {
+  width: canvasSize.x + 'px',
+  height: canvasSize.y + 'px'
+}
+
+class TSPCanvas extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      circleX: 50,
+      circleY: 50,
+      minX: undefined,
+      maxX: undefined,
+      minY: undefined,
+      maxY: undefined,
+    };
+    this.scale = { x: 1, y: 1;}
+  }
+
+  scaleX(x) {
+    return (x - this.minX) * this.scale.x;
+  }
+
+  scaleY(y) {
+    return (y - this.minY) * this.scale.y;
+  }
+}
+
+
+
+
+
+
+
+
+  componentWillMount() {
+    this.cities = libTsp.smallCities.Cities;
+    this.determineScalingFrom(this.cities);
+  }
+
+  componentDidMount() {
+    this.updateTSPVertices(this.cities);
+  }
+
+  componentDidUpdate() {
+    if (this.props.needsRun) {
+      this.click();
+    }
+  }
+
+  render() {
+    return (
+      <div style = {canvasContainerStyle}>
+        <canvas id='TSP'
+                ref={(c) => {if (c) {this.context = c.getContext('2d')}}}
+                height={canvasStyle.height}
+                width={canvasStyle.width}
+                style={canvasStyle}
+                onClick={() => this.click()} />
+      </div>
+    );
+  }
+}
+
+class TSP extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      needsRun: true
+    };
+  }
+
+  run() {
+    this.setState({
+      needsRun: true
+    });
+  }
+
+  render() {
+    return <div>
+             <TSPCanvas needsRun={this.state.needsRun} />
+             <br /><button onClick={() => this.click()}>Run!</button>
+           </div>
+  }
+}
+
+const App = (props) => {
+  return <TSP />>
+}
+
+export default App:

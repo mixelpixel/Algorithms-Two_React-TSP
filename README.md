@@ -1,6 +1,4 @@
-
 # Algorithms Circle the Wagons
-
 # Terms
 
 - Computability
@@ -43,7 +41,7 @@ You are going to begin integrating all of your skills into a complete Computer S
         super(props);
         this.state = {
         };
-      } 
+      }
       updateTSPVertices() {
         // when the TSP has a set of vertices (cities), draw them as small
         // circles here.
@@ -89,4 +87,3 @@ First, think about what your component should be able to do:
 ## Next:
 
 Another react component: Draw it!
-
